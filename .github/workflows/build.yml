@@ -1,0 +1,52 @@
+name: Build
+
+on:
+  push:
+    tags:
+    - v*
+
+concurrency:
+  group: build-${{ github.head_ref }}
+
+jobs:
+  build:
+    name: Build wheel and source distribution
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv and set the python version
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+          version: "0.5.29"
+
+      - name: Build
+        run: uv build
+
+      - name: Stash dist artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifacts
+          path: dist/*
+          if-no-files-found: error
+
+  publish:
+    name: Publish release
+    needs: [build]
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Unstash dist artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: artifacts
+        path: dist
+
+    - name: Push build artifacts to PyPI
+      uses: pypa/gh-action-pypi-publish@v1.12.4
+      with:
+        skip_existing: true
+        user: __token__
+        password: ${{ secrets.PYPI_TOKEN }}

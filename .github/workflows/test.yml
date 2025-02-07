@@ -2,7 +2,7 @@ name: Test
 on: [push]
 jobs:
   build:
-    name: continuous-integration
+    name: Run pytest
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -20,6 +20,7 @@ jobs:
         with:
           enable-cache: true
           cache-dependency-glob: "uv.lock"
+          version: "0.5.29"
           python-version: ${{ matrix.python-version }}
 
       - name: Install the project
