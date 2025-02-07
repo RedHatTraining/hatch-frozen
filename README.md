@@ -1,5 +1,7 @@
 # `hatch-frozen`: A Hatch build hook plug-in for freezing dependencies
 
+CI/CD | [![CI - Test](https://github.com/RedHatTraining/hatch-frozen/actions/workflows/test.yml/badge.svg)](https://github.com/RedHatTraining/hatch-frozen/actions/workflows/test.yml)
+
 ## Usage
 
 In your `pyproject.toml` file, add `hatch-frozen` as a build requirements, then add the `[tool.hatch.build.hooks.frozen]` table.
