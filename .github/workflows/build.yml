@@ -1,9 +1,10 @@
 name: Build
 
-on:
-  push:
-    tags:
-    - v*
+on: [push]
+# on:
+#   push:
+#     tags:
+#     - v*
 
 concurrency:
   group: build-${{ github.head_ref }}
