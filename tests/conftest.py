@@ -27,7 +27,7 @@ def test_project():
         tmp_project = Path(tmpdir) / "hatch-frozen-test-project"
         shutil.copytree(source_dir, tmp_project)
 
-        pyproject_toml = source_dir / "pyproject.toml"
+        pyproject_toml = tmp_project / "pyproject.toml"
         with open(pyproject_toml, "r") as f:
             content = f.read()
             new_content = content.replace(
