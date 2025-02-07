@@ -1,6 +1,6 @@
 [project]
 name = "hatch-frozen"
-version = "0.1.0"
+version = "0.1.1"
 description = "A build hook plugin for Hatch to freeze the depedency tree for repeatable builds"
 license = { file = "LICENSE" }
 readme = "README.md"
