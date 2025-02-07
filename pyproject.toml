@@ -1,0 +1,29 @@
+[project]
+name = "hatch-frozen"
+version = "0.1.0"
+description = "A build hook plugin for Hatch to freeze the depedency tree for repeatable builds"
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = ["Framework :: Hatch"]
+dependencies = ["hatchling>=1.6.0"]
+
+[project.entry-points.hatch]
+frozen = "hatch_frozen.hooks"
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+# Check `line-too-long` rule
+extend-select = ["E501"]
+
+[dependency-groups]
+dev = [
+    "hatch>=1.14.0",
+    "pytest>=8.3.4",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
