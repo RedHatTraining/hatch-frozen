@@ -2,7 +2,7 @@
 name = "hatch-frozen"
 version = "0.1.0"
 description = "A build hook plugin for Hatch to freeze the depedency tree for repeatable builds"
-license = "MIT"
+license = { file = "LICENSE" }
 readme = "README.md"
 requires-python = ">=3.9"
 classifiers = ["Framework :: Hatch"]
@@ -19,10 +19,7 @@ line-length = 88
 extend-select = ["E501"]
 
 [dependency-groups]
-dev = [
-    "hatch>=1.14.0",
-    "pytest>=8.3.4",
-]
+dev = ["hatch>=1.14.0", "pytest>=8.3.4"]
 
 [build-system]
 requires = ["hatchling"]
