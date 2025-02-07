@@ -1,18 +1,18 @@
 # `hatch-frozen`: A Hatch build hook plug-in for freezing dependencies
 
-CI/CD | [![CI - Test](https://github.com/RedHatTraining/hatch-frozen/actions/workflows/test.yml/badge.svg)](https://github.com/RedHatTraining/hatch-frozen/actions/workflows/test.yml)
+[![CI - Test](https://github.com/RedHatTraining/hatch-frozen/actions/workflows/test.yml/badge.svg)](https://github.com/RedHatTraining/hatch-frozen/actions/workflows/test.yml)
+
+This plugin freezes the dependency tree of your builds.
+In practice, this ensures that Pip always pulls the exact same dependency tree when your package is installed.
 
 ## Usage
 
-In your `pyproject.toml` file, add `hatch-frozen` as a build requirements, then add the `[tool.hatch.build.hooks.frozen]` table.
+In your `pyproject.toml` file, add the following:
 
-<pre><code>
-[build-system]
-requires = ["hatchling>=1.24.0,<2", <b>"hatch-frozen"</b>]
-build-backend = "hatchling.build"
-
-<b>[tool.hatch.build.hooks.frozen]</b>
-</code></pre>
+```toml
+[tool.hatch.build.hooks.frozen]
+dependencies = ["hatch-frozen"]
+```
 
 The plug-in reads the frozen dependencies from the `requirements.txt` file of your project, so make sure this file exists.
 
