@@ -37,17 +37,22 @@ jobs:
     name: Publish release
     needs: [build]
     runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/hatch-frozen
+    permissions:
+      id-token: write  # Mandatory for PyPI trusted publishing
 
     steps:
-    - name: Unstash dist artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: artifacts
-        path: dist
+      - name: Unstash dist artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: artifacts
+          path: dist
 
-    - name: Push build artifacts to PyPI
-      uses: pypa/gh-action-pypi-publish@v1.12.4
-      with:
-        skip_existing: true
-        user: __token__
-        password: ${{ secrets.PYPI_TOKEN }}
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          skip_existing: true
+          # user: __token__
+          # password: ${{ secrets.PYPI_TOKEN }}
