@@ -1,5 +1,7 @@
 # `hatch-frozen`: A Hatch build hook plug-in for freezing dependencies
 
+[![CI - Test](https://github.com/RedHatTraining/hatch-frozen/actions/workflows/test.yml/badge.svg)](https://github.com/RedHatTraining/hatch-frozen/actions/workflows/test.yml)
+
 This plugin freezes the dependency tree of your builds.
 In practice, this ensures that Pip always pulls the exact same dependency tree when your package is installed.
 
